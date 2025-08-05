@@ -6,8 +6,9 @@ import './FoodDetails.css';
 const FoodDetails = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const { food_list = [], addToCart, removeFromCart, cartItems = {}, url } = useContext(StoreContext);
+  const { food_list = [], addToCart, removeFromCart, cartItems = {} } = useContext(StoreContext);
 
+  // Find the selected food item
   const foodItem = food_list.find(item => item._id === id);
   if (!foodItem) return <div className="food-details-error">⚠️ Food item not found!</div>;
 
@@ -21,8 +22,7 @@ const FoodDetails = () => {
       <div className="food-details-wrapper">
         {/* Image */}
         <div className="food-image-container">
-<img src={foodItem.image} alt={foodItem.name} />
-
+          <img src={foodItem.image} alt={foodItem.name} />
         </div>
 
         {/* Info */}
@@ -38,11 +38,17 @@ const FoodDetails = () => {
             <button onClick={() => addToCart(id)}>+</button>
           </div>
 
-          {/* Go to Cart */}
+          {/* Desktop Button */}
           <button className="add-to-cart-btn" onClick={() => navigate('/cart')}>
             Go to Cart
           </button>
         </div>
+      </div>
+
+      {/* Sticky Mobile Cart Bar */}
+      <div className="mobile-cart-bar">
+        <span className="mobile-price">₹{foodItem.price}</span>
+        <button onClick={() => navigate('/cart')}>Go to Cart</button>
       </div>
     </div>
   );

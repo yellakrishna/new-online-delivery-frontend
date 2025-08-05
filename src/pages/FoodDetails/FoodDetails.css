@@ -2,6 +2,7 @@
   padding: 20px;
   max-width: 1200px;
   margin: auto;
+  background: #fafafa;
 }
 
 .back-btn {
@@ -23,13 +24,12 @@
 /* IMAGE */
 .food-image-container {
   flex: 1;
-  min-width: 320px;
+  min-width: 250px;
 }
 
 .food-image-container img {
   width: 100%;
   max-width: 500px;
-  height: auto; /* Keeps proportions */
   border-radius: 12px;
   object-fit: cover;
 }
@@ -43,6 +43,7 @@
 .food-info h1 {
   font-size: 28px;
   margin-bottom: 10px;
+  color: #222;
 }
 
 .description {
@@ -67,7 +68,7 @@
 }
 
 .quantity-selector button {
-  background: #ff4c24;
+  background: #3b70cb;
   color: white;
   border: none;
   font-size: 20px;
@@ -82,12 +83,12 @@
   text-align: center;
 }
 
-/* CART BUTTON */
+/* Desktop Cart Button */
 .add-to-cart-btn {
-  background: #28a745;
+  background: #2d8f44;
   color: white;
   border: none;
-  padding: 12px 20px;
+  padding: 12px;
   font-size: 18px;
   border-radius: 8px;
   cursor: pointer;
@@ -98,22 +99,68 @@
   background: #218838;
 }
 
-/* MOBILE VIEW */
+/* Sticky Mobile Cart Bar */
+.mobile-cart-bar {
+  display: none;
+}
+
+/* ===================== MOBILE VIEW ===================== */
 @media (max-width: 768px) {
   .food-details-wrapper {
     flex-direction: column;
     align-items: center;
+    gap: 20px;
+  }
+
+  .food-image-container {
+    width: 100%;
   }
 
   .food-image-container img {
+    width: 100%;
     max-width: 100%;
+    height: auto;
   }
 
+  /* Hide desktop cart button on mobile */
   .add-to-cart-btn {
+    display: none;
+  }
+
+  /* Sticky Mobile Cart Bar */
+  .mobile-cart-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #fff7f6;
+    padding: 14px 20px;
     position: sticky;
     bottom: 0;
-    padding: 15px;
-    font-size: 20px;
+    left: 0;
+    right: 0;
+    box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+    z-index: 999;
+    border-top: 2px solid #b34f39;
+  }
+
+  .mobile-price {
+    font-size: 18px;
     font-weight: bold;
+    color: #ff4c24;
+  }
+
+  .mobile-cart-bar button {
+    background: #1da137;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  .mobile-cart-bar button:hover {
+    background: #d9363e;
   }
 }

@@ -11,7 +11,9 @@ const FoodDisplay = ({ category }) => {
     <div className='food-display' id='food-display'>
       <h2>Fresh and Tasty</h2>
       <div className='food-display-list'>
+        <div className="food-grid">
         {
+          
           Array.isArray(food_list) && food_list.length > 0 ? (
             food_list
               .filter(item => category === "All" || category === item.category)
@@ -30,6 +32,7 @@ const FoodDisplay = ({ category }) => {
           )
         }
       </div>
+    </div>
     </div>
   );
 };
