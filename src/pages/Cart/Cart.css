@@ -1,0 +1,151 @@
+.cart-page {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 16px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* Items container */
+.cart-items-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.cart-item-card {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border-radius: 10px;
+  padding: 12px;
+  box-shadow: 0px 2px 8px rgba(0,0,0,0.05);
+  position: relative;
+}
+
+.cart-item-image img {
+  width: 80px;
+  height: 80px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.cart-item-details {
+  flex: 1;
+  margin-left: 12px;
+}
+
+.cart-item-details h3 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.cart-item-details .price {
+  color: #ff4d30;
+  font-weight: 500;
+}
+
+.quantity {
+  font-size: 14px;
+  color: #444;
+}
+
+.item-total {
+  font-size: 14px;
+  font-weight: 500;
+  color: #1d3557;
+}
+
+.remove-btn {
+  background: transparent;
+  border: none;
+  font-size: 18px;
+  color: #d62828;
+  cursor: pointer;
+  position: absolute;
+  top: 25px;
+  right: 8px;
+}
+
+.empty-cart {
+  text-align: center;
+  color: #888;
+  padding: 40px 0;
+}
+
+/* Cart Summary */
+.cart-summary {
+  background: #fff;
+  border-radius: 10px;
+  padding: 16px;
+  box-shadow: 0px 2px 8px rgba(0,0,0,0.05);
+}
+
+.cart-summary h2 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  margin: 6px 0;
+}
+
+.summary-row.total {
+  font-size: 16px;
+}
+
+.checkout-btn {
+  margin-top: 16px;
+  background: linear-gradient(90deg, #ff4d30, #ff7e5f);
+  color: white;
+  font-weight: 500;
+  padding: 10px 0;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  width: 100%;
+  transition: 0.3s;
+}
+
+.checkout-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0px 4px 12px rgba(255,77,48,0.3);
+}
+
+/* Desktop Layout */
+@media (min-width: 768px) {
+  .cart-page {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  .cart-items-container {
+    flex: 2;
+  }
+
+  .cart-summary {
+    flex: 1;
+    position: sticky;
+    top: 20px;
+    align-self: flex-start;
+  }
+
+  .cart-item-card {
+    gap: 16px;
+  }
+
+  .cart-item-image img {
+    width: 100px;
+    height: 100px;
+  }
+
+  .cart-item-details h3 {
+    font-size: 18px;
+  }
+}

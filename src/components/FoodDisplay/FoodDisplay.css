@@ -1,0 +1,60 @@
+.food-display {
+  padding: 40px 20px;
+  background: linear-gradient(135deg, #fffdf9, #fff0e6);
+  border-radius: 16px;
+  box-shadow: 0 6px 30px rgba(0, 0, 0, 0.04);
+  font-family: 'Poppins', sans-serif;
+  transition: all 0.3s ease;
+}
+
+.food-display h2 {
+  font-size: 2.4rem;
+  font-weight: bold;
+  text-align: center;
+  color: #ff5722;
+  margin-bottom: 30px;
+  position: relative;
+}
+
+.food-display h2::after {
+  content: '';
+  width: 60px;
+  height: 4px;
+  background: #ff7043;
+  display: block;
+  margin: 10px auto 0;
+  border-radius: 2px;
+}
+
+.food-display-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 30px;
+  justify-content: center;
+  align-items: stretch;
+}
+
+.no-food-message {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #888;
+  padding: 40px;
+  border: 2px dashed #ffc2a1;
+  border-radius: 12px;
+  background: #fff8f3;
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  .food-display {
+    padding: 20px 10px;
+  }
+
+  .food-display h2 {
+    font-size: 1.8rem;
+  }
+
+  .food-display-list {
+    gap: 20px;
+  }
+}

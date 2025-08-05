@@ -1,0 +1,167 @@
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 24px;
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar-logo {
+  height: 85px;
+}
+
+.navbar-menu {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+}
+
+.navbar-link {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.navbar-link:hover,
+.navbar-link.active {
+  color: #ff5722;
+}
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  position: relative;
+}
+
+.navbar-icon {
+  height: 24px;
+  cursor: pointer;
+  
+}
+
+.navbar-icon-wrapper {
+  position: relative;
+}
+
+.navbar-cart-dot {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  background-color: red;
+  height: 8px;
+  width: 8px;
+  border-radius: 50%;
+}
+
+.navbar-btn {
+  padding: 6px 12px;
+  border: none;
+  background-color: #ff5722;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+}
+/* Profile Dropdown */
+.navbar-profile {
+  position: relative;
+}
+
+
+
+.navbar-dropdown {
+  position: absolute;
+  top: 48px;
+  right: 0;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0px 4px 12px rgba(0,0,0,0.1);
+  padding: 8px 0;
+  min-width: 160px;
+  z-index: 1000;
+  animation: fadeIn 0.2s ease-in-out;
+}
+
+.navbar-dropdown li {
+  display: flex;
+  align-items: center;
+  padding: 10px 14px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.navbar-dropdown li:hover {
+  background: #f5f5f5;
+}
+
+.navbar-dropdown img {
+  width: 18px;
+  margin-right: 8px;
+}
+
+.navbar-dropdown p {
+  margin: 0;
+  font-size: 14px;
+  color: #333;
+}
+
+.navbar-dropdown hr {
+  margin: 6px 0;
+  border: none;
+  border-top: 1px solid #eee;
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+
+.navbar-menu-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+  cursor: pointer;
+}
+
+.navbar-menu-toggle .bar {
+  width: 20px;
+  height: 2px;
+  background-color: #333;
+}
+
+/* Responsive for mobile */
+@media screen and (max-width: 768px) {
+  .navbar-menu {
+    display: none;
+    position: absolute;
+    top: 64px;
+    left: 0;
+    width: 100%;
+    flex-direction: column;
+    background-color: white;
+    padding: 12px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+
+  .navbar-menu.open {
+    display: flex;
+  }
+
+  .navbar-menu-toggle {
+    display: flex;
+  }
+}
+
+
+
+
+
+
+

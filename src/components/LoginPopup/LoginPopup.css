@@ -1,0 +1,84 @@
+.login-popup {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 50, 70, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 3000;
+  padding: 20px;
+}
+
+.login-popup-container {
+  background: white;
+  padding: 25px;
+  width: 100%;
+  max-width: 380px;
+  border-radius: 10px;
+  animation: fadeInUp 0.3s ease;
+}
+
+.login-popup-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.login-popup-inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 18px 0;
+}
+
+.login-popup-inputs input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.login-btn {
+  background: #0088cc;
+  color: white;
+  padding: 12px;
+  border: none;
+  width: 100%;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.switch-auth span {
+  color: #0088cc;
+  cursor: pointer;
+}
+
+@keyframes fadeInUp {
+  from {
+    transform: translateY(40px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 22px;
+  cursor: pointer;
+  color: #555;
+  line-height: 1;
+}
+
+.close-btn:hover {
+  color: #d9534f; /* red hover */
+}
