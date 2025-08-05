@@ -40,13 +40,45 @@ const PlaceOrder = () => {
     token,
   } = useContext(StoreContext);
 
-  // 📌 Handle form input changes
-  const onChangeHandler = (e) => {
-    setData((prev) => ({
-      ...prev,
-      [e.target.name]: e.target.value,
-    }));
-  };
+ // 📌 Handle form input changes with validation
+const onChangeHandler = (e) => {
+  const { name, value } = e.target;
+
+  // Validation rules
+  if (name === "firstName" || name === "lastName") {
+    if (!/^[A-Za-z ]{2,}$/.test(value)) {
+      toast.error("Name should only contain letters and at least 2 characters");
+      return;
+    }
+  }
+
+  if (name === "email") {
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
+      toast.error("Enter a valid email address");
+      return;
+    }
+  }
+
+  if (name === "phone") {
+    if (!/^[0-9]{10}$/.test(value)) {
+      toast.error("Phone must be exactly 10 digits");
+      return;
+    }
+  }
+
+  if (name === "zipCode") {
+    if (!/^[0-9]{5,6}$/.test(value)) {
+      toast.error("Enter a valid postal code");
+      return;
+    }
+  }
+
+  setData((prev) => ({
+    ...prev,
+    [name]: value,
+  }));
+};
+
 
   // 📌 Place Order
   const placeOrder = async (e) => {
