@@ -2,7 +2,7 @@ import { createContext, useEffect, useState } from "react";
 import { menu_list } from "../assets/assets"; // Your static menu list
 import axios from "axios";
 
-export const url = import.meta.env.url;
+export const url = import.meta.env.VITE_API_URL;
 
 // Create Context
 export const StoreContext = createContext(null);
