@@ -15,6 +15,7 @@ const Navbar = () => {
   const logout = () => {
     localStorage.removeItem("token");
     setToken("");
+    setMenuOpen(false); // close menu on logout
     navigate("/");
   };
 
@@ -34,60 +35,52 @@ const Navbar = () => {
     return () => document.removeEventListener("click", handleClickOutside);
   }, []);
 
+  // ✅ Helper to navigate & close mobile menu
+  const handleNavClick = (path) => {
+    navigate(path);
+    setMenuOpen(false);
+  };
+
   return (
     <nav className="navbar">
       {/* Logo */}
       <div className="navbar-left">
-        <Link to="/">
+        <Link to="/" onClick={() => setMenuOpen(false)}>
           <img className="navbar-logo" src={assets.logo} alt="Logo" />
         </Link>
       </div>
 
-      {/* Desktop Menu */}
+      {/* Desktop/Mobile Menu */}
       <div className={`navbar-menu ${menuOpen ? "open" : ""}`}>
-        <NavLink
-          to="/"
-          className="navbar-link"
-          onClick={() => setMenuOpen(false)}
-        >
+        <NavLink to="/" className="navbar-link" onClick={() => setMenuOpen(false)}>
           Home
         </NavLink>
-        <NavLink
-          to="/menu"
-          className="navbar-link"
-          onClick={() => setMenuOpen(false)}
-        >
+        <NavLink to="/menu" className="navbar-link" onClick={() => setMenuOpen(false)}>
           Menu
         </NavLink>
-
-          <NavLink to="/myorders"  className="navbar-lin" onClick={() => navigate("/myorders") }>
-                 <p>Orders</p>
-                </NavLink>
-        <a
-          href="#footer"
+        <NavLink
+          to="/myorders"
           className="navbar-link"
-          onClick={() => setMenuOpen(false)}
+          onClick={() => handleNavClick("/myorders")}
         >
+          Orders
+        </NavLink>
+        <a href="#footer" className="navbar-link" onClick={() => setMenuOpen(false)}>
           Contact Us
         </a>
       </div>
 
       {/* Right Section */}
       <div className="navbar-right">
-
-       
         {/* Cart */}
-        <Link to="/cart" className="navbar-icon-wrapper">
+        <Link to="/cart" className="navbar-icon-wrapper" onClick={() => setMenuOpen(false)}>
           <img src={assets.basket_icon} alt="Cart" />
           {getTotalCartAmount() > 0 && <div className="navbar-cart-dot" />}
         </Link>
 
         {/* Login / Profile */}
         {!token ? (
-          <button
-            className="navbar-btn"
-            onClick={() => navigate("/login")} // ✅ Always go to /login route
-          >
+          <button className="navbar-btn" onClick={() => handleNavClick("/login")}>
             Sign In
           </button>
         ) : (
@@ -100,7 +93,12 @@ const Navbar = () => {
             />
             {profileOpen && (
               <ul className="navbar-dropdown">
-                <li onClick={() => navigate("/myorders")}>
+                <li
+                  onClick={() => {
+                    handleNavClick("/myorders");
+                    setProfileOpen(false);
+                  }}
+                >
                   <img src={assets.bag_icon} alt="" /> <p>Orders</p>
                 </li>
                 <hr />
