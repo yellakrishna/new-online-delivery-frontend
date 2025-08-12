@@ -1,14 +1,15 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import './FoodItem.css';
 import { assets } from '../../assets/assets';
 import { StoreContext } from "../../Context/StoreContext.jsx";
 import { Link, useNavigate } from 'react-router-dom';
 
 const FoodItem = ({ image, name, id }) => {
-  const { url, token } = useContext(StoreContext);
+  const { token } = useContext(StoreContext);
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(true);
 
-  // ✅ If user not logged in, redirect to login when clicking item
+  // Redirect to login if not logged in
   const handleClick = (e) => {
     if (!token) {
       e.preventDefault();
@@ -16,7 +17,7 @@ const FoodItem = ({ image, name, id }) => {
     }
   };
 
-  // ✅ Check if item details are missing
+  // Show error if details missing
   if (!id || !image || !name) {
     return (
       <div className="food-item error">
@@ -33,14 +34,20 @@ const FoodItem = ({ image, name, id }) => {
         onClick={handleClick}
       >
         <div className="food-item-img-container">
+          {loading && <div className="circle-loader"></div>}
+          
           <img
-            className="food-item-image"
-            src={image} // Use Cloudinary URL directly
-
+            className={`food-item-image ${loading ? 'hidden' : ''}`}
+            src={image}
             alt={`Image of ${name}`}
-            onError={(e) => (e.target.src = assets.fallback_image)}
+            onLoad={() => setLoading(false)}
+            onError={(e) => {
+              setLoading(false);
+              e.target.src = assets.fallback_image;
+            }}
           />
-          <button className="food-item-btn">Order Now</button>
+
+          {!loading && <button className="food-item-btn">Order Now</button>}
         </div>
         <div className="food-item-info">
           <p className="food-item-name">{name}</p>
