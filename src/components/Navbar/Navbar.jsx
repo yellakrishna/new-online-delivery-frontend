@@ -59,6 +59,10 @@ const Navbar = () => {
         >
           Menu
         </NavLink>
+
+          <NavLink  className="navbar-lin" onClick={() => navigate("/myorders") }>
+                 <p>Orders</p>
+                </NavLink>
         <a
           href="#footer"
           className="navbar-link"
@@ -70,6 +74,8 @@ const Navbar = () => {
 
       {/* Right Section */}
       <div className="navbar-right">
+
+       
         {/* Cart */}
         <Link to="/cart" className="navbar-icon-wrapper">
           <img src={assets.basket_icon} alt="Cart" />

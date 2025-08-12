@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { StoreContext } from "../../Context/StoreContext";
 import FoodItem from "../../components/FoodItem/FoodItem";
@@ -8,6 +8,15 @@ const CategoryPage = () => {
   const { categoryName } = useParams();
   const navigate = useNavigate();
   const { food_list } = useContext(StoreContext);
+
+  const [loading, setLoading] = useState(true);
+
+  // Wait for food_list to load
+  useEffect(() => {
+    if (Array.isArray(food_list) && food_list.length > 0) {
+      setLoading(false);
+    }
+  }, [food_list]);
 
   const categoryItems = food_list.filter(
     (item) => item.category?.toLowerCase() === categoryName?.toLowerCase()
@@ -24,7 +33,9 @@ const CategoryPage = () => {
       </div>
 
       <section className="category-right">
-        {categoryItems.length > 0 ? (
+        {loading ? (
+          <div className="circular-loader"></div>
+        ) : categoryItems.length > 0 ? (
           categoryItems.map((item) => (
             <FoodItem
               key={item._id}

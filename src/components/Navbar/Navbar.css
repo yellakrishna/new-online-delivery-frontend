@@ -12,7 +12,8 @@
 }
 
 .navbar-logo {
-  height: 85px;
+  height: 65px;
+  
 }
 
 .navbar-menu {
@@ -38,6 +39,7 @@
   align-items: center;
   gap: 16px;
   position: relative;
+  
 }
 
 .navbar-icon {
@@ -150,7 +152,10 @@
     padding: 12px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   }
-  
+  .navbar-left{
+    margin-right: 20px;
+  }
+ 
 
   .navbar-menu.open {
     display: flex;
