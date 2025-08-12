@@ -60,7 +60,7 @@ const Navbar = () => {
           Menu
         </NavLink>
 
-          <NavLink  className="navbar-lin" onClick={() => navigate("/myorders") }>
+          <NavLink to="/myorders"  className="navbar-lin" onClick={() => navigate("/myorders") }>
                  <p>Orders</p>
                 </NavLink>
         <a
